@@ -20,6 +20,7 @@ const reducer = (state = [], action) => {
 const store = createStore(reducer)
 
 const paintTodos = () => {
+  // state가 변할 때마다 re-rendering을 할 때는 react의 특징이기도 하다~
   const toDos = store.getState()
   ul.innerHTML = ''
   toDos.forEach((todo) => {
