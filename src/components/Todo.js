@@ -1,11 +1,15 @@
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { actionCreators } from '../store'
 
-function Todo({ text, dispatchDeleteTodo }) {
+function Todo({ text, id, dispatchDeleteTodo }) {
   return (
-    <li>
-      {text} <button onClick={dispatchDeleteTodo}>Delete</button>
-    </li>
+    <>
+      <Link to={`/${id}`}>
+        <li>{text}</li>
+      </Link>
+      <button onClick={dispatchDeleteTodo}>Delete</button>
+    </>
   )
 }
 
