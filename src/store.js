@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import { createAction, createReducer } from '@reduxjs/toolkit'
+import { configureStore, createAction, createReducer } from '@reduxjs/toolkit'
 
 /*
 const addTodo = (text) => ({
@@ -43,7 +43,10 @@ const reducer = createReducer(initialState, (builder) => {
     )
 })
 
-const store = createStore(reducer)
+// const store = createStore(reducer)
+// configureStore로 store를 정의하면 브라우저 상에서 Redux dev tool로 state를 시각적으로 확인할 수 있다.
+// 물론 보통 redux로 만들어도 dev tool은 사용할 수 있다ㅎ
+const store = configureStore({ reducer })
 
 export const actionCreators = {
   addTodo,
