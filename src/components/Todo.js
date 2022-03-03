@@ -1,14 +1,16 @@
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { actionCreators } from '../store'
+import { remove } from '../store/store_slice'
 
-function Todo({ text, id, dispatchDeleteTodo }) {
+function Todo({ text, id, dispatchDeleteTodo, dispatchRemoveSlice }) {
   return (
     <>
       <Link to={`/${id}`}>
         <li>{text}</li>
       </Link>
-      <button onClick={dispatchDeleteTodo}>Delete</button>
+      {/* <button onClick={dispatchDeleteTodo}>Delete</button> */}
+      <button onClick={dispatchRemoveSlice}>Delete</button>
     </>
   )
 }
@@ -17,6 +19,7 @@ function Todo({ text, id, dispatchDeleteTodo }) {
 function mapDispatchToProps(dispatch, { id }) {
   return {
     dispatchDeleteTodo: () => dispatch(actionCreators.deleteTodo(id)),
+    dispatchRemoveSlice: () => dispatch(remove(id)),
   }
 }
 

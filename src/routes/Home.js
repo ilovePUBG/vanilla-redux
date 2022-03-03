@@ -1,16 +1,18 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from '../store'
+import { add } from '../store/store_slice'
 import Todo from '../components/Todo'
 
-function Home({ todos, dispatchAddTodo }) {
+function Home({ todos, dispatchAddTodo, dispatchAddSlice }) {
   const [text, setText] = useState('')
   function onChange(ev) {
     setText(() => ev.target.value)
   }
   function onSubmit(ev) {
     ev.preventDefault()
-    dispatchAddTodo(text)
+    // dispatchAddTodo(text)
+    dispatchAddSlice(text)
     setText(() => '')
   }
   return (
@@ -36,6 +38,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     dispatchAddTodo: (text) => dispatch(actionCreators.addTodo(text)),
+    dispatchAddSlice: (text) => dispatch(add(text)),
   }
 }
 
